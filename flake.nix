@@ -8,7 +8,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations.x230 = nixpkgs.lib.nixosSystem {
       modules = [
         ./configuration.nix
