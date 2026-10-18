@@ -1,14 +1,27 @@
 { config, pkgs, ... }:
 {
-  home.username = "ziad";
-  home.homeDirectory = "/home/ziad";
+	home.username = "ziad";
+	home.homeDirectory = "/home/ziad";
 
-  xdg.configFile."xmonad" = {
-    source = ./config/xmonad; 
-    recursive = true;
-  };
-  
-  programs.home-manager.enable = true;
+	xdg.configFile."xmonad" = {
+		source = ./config/xmonad; 
+		recursive = true;
+	};
 
-  home.stateVersion = "26.05";
+	programs.bash = {
+		enable = true;
+		enableCompletion = true;
+		shellAliases = {
+			r = "ranger";
+			config  = "vim ~/system";
+			rebuild = "sudo nixos-rebuild switch --flake ~/system";
+		};
+	};
+
+	home.packages = with pkgs; [
+		ranger
+		ungoogled-chromium
+	];
+
+	home.stateVersion = "26.05";
 }
