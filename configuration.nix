@@ -32,9 +32,6 @@
 		LC_MEASUREMENT = "de_CH.UTF-8";
 	};
 
-	services.xkb.layout = "us";
-	console.useXkbConfig = true;
-
 	# ___ Audio ___
 	
 	security.rtkit.enable = true;
@@ -56,18 +53,35 @@
 	};
 
 	# ___ Desktop ___
+	
+	services.xserver = {
+		enable = true;
+		xkb.layout = "us";
+		displayManager.startx.enable = true;
 
-	programs.niri.enable = true;
+		windowManager.xmonad = {
+			enable = true;
+			enableContribAndExtras = true;		
+		};	
+	};
+
+	services.libinput.enable = true;
+	programs.slock.enable = true;
+	programs.xss-lock = { 
+		enable = true; 
+		lockerCommand = "/run/wrappers/bin/slock";
+	};
+
 	environment.loginShellInit = ''
-		[ "$(tty)" = /dev/tty1 ] && exec niri-session
+		[ "$(tty)" = /dev/tty1 ] && startx
 	'';
 
 	# ___ Packages ___
 
 	environment.systemPackages = with pkgs; [
-		alacritty fuzzel waybar mako swaylock swayidle
-		xwayland-satellite brightnessctl wl-clipboard
-		ungoogled-chromium git neovim ripgrep fd htop openconnect zathura
+		vim git
+		alacritty dmenu
+		brightnessctl xclip
 	];
 
 	# ___ Nix ___

@@ -34,11 +34,10 @@
 			STOP_CHARGE_THRESH_BAT0 = 85;
 		};
 	};
-	services.power-profiles.daemon-enable = false;
 	services.thermald.enable = true;
 	services.fstrim.enable = true;
 
 	# ___ Networking ___
 
-	networking.hostname = "x230";
+	networking.hostName = "x230";
 }
