@@ -3,7 +3,7 @@
 	imports = 
 	[
 		./hardware-configuration.nix
-		./x230.nix
+		./hosts/x230.nix
 	];
 
 	# ___ Boot ___
