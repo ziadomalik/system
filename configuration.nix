@@ -81,7 +81,7 @@
 	environment.systemPackages = with pkgs; [
 		vim git
 		alacritty dmenu
-		brightnessctl xclip
+		brightnessctl xclip xset
 	];
 
 	# ___ Nix ___

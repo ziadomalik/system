@@ -40,4 +40,34 @@
 	# ___ Networking ___
 
 	networking.hostName = "x230";
+
+
+	networking.networkmanager.ensureProfiles = {
+		environmentFiles = [ 
+			"/etc/nixos/secrets/eduroam.env" 
+		];
+
+		profiles.eduroam = {
+			connection = {
+				id = "eduroam";
+				type = "wifi";
+			};
+			wifi = {
+				ssid = "eduroam";
+				mode = "infrastructure";
+			};
+			wifi-security = {
+				key-mgmt = "wpa-eap";
+			};
+			"802-1x" = {
+				eap = "peap;";
+				phase2-auth = "mschapv2";
+				identity = "$ETH_USER@staff-net.ethz.ch";
+				password = "$ETH_WIFI_PASSWORD";
+			};
+
+			ipv4.method = "auto";
+			ipv6.method = "auto";
+		};
+	};
 }
