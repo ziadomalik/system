@@ -58,6 +58,9 @@ import XMonad.Util.XUtils ( showSimpleWindow
 import XMonad.Hooks.ManageHelpers (doRectFloat)
 import XMonad.Hooks.BorderPerWindow (defineBorderWidth, actionQueue)
 
+import Control.Exception (try, IOException)
+import Data.Char (isSpace)
+
 --------------------------------------------------------------------------------
 -- MAIN                                                                       --
 --------------------------------------------------------------------------------
@@ -268,9 +271,25 @@ clockWindowConfig =
 
 clockString :: IO String
 clockString = do
-    t <- getZonedTime
-    let val = formatTime defaultTimeLocale " %r | %b %d " t
-    return val
+    t   <- getZonedTime
+    bat <- batteryString
+    return $ formatTime defaultTimeLocale " %r | %b %d" t ++ " | " ++ bat ++ " "
+
+batteryString :: IO String
+batteryString = do
+    cap <- readSys "/sys/class/power_supply/BAT0/capacity"
+    st  <- readSys "/sys/class/power_supply/BAT0/status"
+    return $ case (cap, st) of
+        (Just c, Just "Charging") -> c ++ "% (charging)"
+        (Just c, _)               -> c ++ "%"
+        _                         -> "no battery"
+
+-- Read a sysfs file 
+readSys :: FilePath -> IO (Maybe String)
+readSys p = either (const Nothing) Just <$>
+    (try (do s <- readFile p
+             length s `seq` return (takeWhile (not . isSpace) s))
+        :: IO (Either IOException String))
 
 --------------------------------------------------------------------------------
 -- Auto Startup                                                               --

@@ -13,6 +13,11 @@
 		recursive = true;
 	};
 
+	xdg.configFile."alacritty" = {
+		source = ./config/alacritty;
+		recursive = true;
+	};
+
 	programs.bash = {
 		enable = true;
 		enableCompletion = true;
