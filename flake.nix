@@ -20,6 +20,8 @@
 	  home-manager.backupFileExtension = "backup";
           home-manager.users.ziad = import ./home.nix;
         }
+
+        ./flakes/eth
       ];
     };
   };

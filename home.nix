@@ -26,6 +26,9 @@
 			cls = "clear";
 			config  = "vim ~/system";
 			rebuild = "sudo nixos-rebuild switch --flake ~/system";
+
+                        eth-up = "sudo systemctl start eth-vpn";
+                        eth-down = "sudo systemctl stop eth-vpn";
 		};
 	};
 
