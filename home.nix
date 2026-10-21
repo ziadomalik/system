@@ -24,6 +24,8 @@
 		shellAliases = {
 			r = "ranger";
 			cls = "clear";
+			grep = "ripgrep";
+
 			config  = "vim ~/system";
 			rebuild = "sudo nixos-rebuild switch --flake ~/system";
 
@@ -53,6 +55,8 @@
 	};
 
 	home.packages = with pkgs; [
+		ripgrep
+
 		ranger ueberzug
 
 		flameshot

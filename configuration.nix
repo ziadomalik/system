@@ -65,7 +65,6 @@
 		};	
 	};
 
-	services.libinput.enable = true;
 	programs.slock.enable = true;
 	programs.xss-lock = { 
 		enable = true; 

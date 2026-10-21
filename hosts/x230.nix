@@ -3,7 +3,7 @@
 
 	# ___ Boot ___
 
-	boot.kernelModules = [ "acpi_call" ];
+	boot.kernelModules = [ "acpi_call" "phc-intel" ];
 	boot.extraModulePackages = 
 	[ 
 		config.boot.kernelPackages.acpi_call 
@@ -19,23 +19,34 @@
 		extraPackages = [ pkgs.intel-vaapi-driver ];
 	};
 
+	# ___ Trackpad ___
+
+	environment.systemPackages = with pkgs; [
+		xf86inputsynaptics
+	];
+
+	hardware.trackpoint.enable = true;
+
+	services.xserver.synaptics = {
+		enable = true;	
+		accelFactor = "0.4";
+		horizEdgeScroll = true;
+		palmDetect = true;
+		tapButtons = true;
+		vertTwoFingerScroll = true;
+		vertEdgeScroll = true;
+		buttonsMap = [ 1 3 2 ];
+		fingersMap = [ 1 2 3 ];
+	};
+
 	# ___ Power ___
 
-	services.tlp = {
-		enable = true;
-		settings = {
-			CPU_SCALING_GOVERNOR_ON_AC = "powersave";
-			CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-			CPU_ENERGY_PERF_POLICY_ON_AC = "balance_performance";
-			CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-			CPU_BOOST_ON_BAT = 0;
-			
-			START_CHARGE_THRESH_BAT0 = 75;
-			STOP_CHARGE_THRESH_BAT0 = 85;
-		};
-	};
-	services.thermald.enable = true;
+	powerManagement.enable = true;
+
+	services.tlp.enable = true;
 	services.fstrim.enable = true;
+	services.upower.enable = true;
+	services.thermald.enable = true;
 
 	# ___ Networking ___
 
