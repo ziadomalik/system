@@ -25,8 +25,9 @@
 		xf86inputsynaptics
 	];
 
+	services.libinput.enable = false;
 	hardware.trackpoint.enable = true;
-
+	
 	services.xserver.synaptics = {
 		enable = true;	
 		accelFactor = "0.4";
