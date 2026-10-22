@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+  imports = [
+    ./hardware-configuration.nix 
+  ];
 
   # ___ Boot ___
 

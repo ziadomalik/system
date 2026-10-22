@@ -1,10 +1,5 @@
 { pkgs, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-    ./hosts/x230.nix
-  ];
-
   # ___ Boot ___
 
   boot.loader.systemd-boot.enable = true;
