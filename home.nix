@@ -38,7 +38,7 @@
     enable = true;
     settings.user = {
       name = "Ziad Malik";
-      email = "me@ziadmalik.com";
+      email = "zmalik@ethz.ch";
     };
   };
 
