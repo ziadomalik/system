@@ -63,6 +63,12 @@
     };
   };
 
+  services.logind.settings.Login = {
+    HandleLidSwitch = "suspend";
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitchExternalPower = "suspend";
+  };
+
   programs.slock.enable = true;
   programs.xss-lock = {
     enable = true;
