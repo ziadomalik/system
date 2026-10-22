@@ -31,11 +31,15 @@
 
   # ___ Virtualization ___
 
-  virtualization.vmware.host.enable = true;
+  virtualisation.vmware.host.enable = true;
   
   # ___ Networking ___
 
   networking.hostName = "tower";
+
+  # ___ Nix-Specific ___
+
+  nixpkgs.config.allowUnfree = true;
 
   system.stateVersion = "26.05";
 }

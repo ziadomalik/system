@@ -8,6 +8,10 @@
     recursive = true;
   };
 
+  home.file.".xinitrc".text = ''
+    exec xmonad
+  '';
+
   xdg.configFile."chromium" = {
     source = ./config/chromium;
     recursive = true;
@@ -55,6 +59,7 @@
   };
 
   home.packages = with pkgs; [
+    keepassxc
     ripgrep
 
     ranger

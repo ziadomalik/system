@@ -211,13 +211,13 @@ myShortcutKeyMap =
 --------------------------------------------------------------------------------
 
 cmdXrandrExt :: String
-cmdXrandrExt = "~/.xmonad/displaymgt.sh"
+cmdXrandrExt = "~/.config/xmonad/displaymgt.sh"
 
 cmdXrandrMir :: String
-cmdXrandrMir = "~/.xmonad/displaymgt.sh --mirror"
+cmdXrandrMir = "~/.config/xmonad/displaymgt.sh --mirror"
 
 cmdXrandrNoE :: String
-cmdXrandrNoE = "~/.xmonad/displaymgt.sh --noext"
+cmdXrandrNoE = "~/.config/xmonad/displaymgt.sh --noext"
 
 rescreenExt :: X ()
 rescreenExt = do
