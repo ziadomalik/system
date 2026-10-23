@@ -35,7 +35,6 @@
 
   services.xserver.synaptics = {
     enable = true;
-    accelFactor = "0.8";
     horizEdgeScroll = true;
     palmDetect = true;
     tapButtons = true;
