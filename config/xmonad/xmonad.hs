@@ -191,7 +191,7 @@ myOpKeyMap =
 
 myScreenshotKeyMap :: [((KeyMask, KeySym), X ())]
 myScreenshotKeyMap =
-    [  ((myModMask .|. shiftMask  , xK_s)    , spawn "flameshot gui") ]
+    [ ((mod4Mask .|. shiftMask, xK_s), spawn "flameshot gui --raw | xclip -selection clipboard -t image/png") ]
 
 myShortcutKeyMap :: [((KeyMask, KeySym), X ())]
 myShortcutKeyMap =

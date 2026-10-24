@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./flakes/browser.nix
+  ];
+
   home.username = "ziad";
   home.homeDirectory = "/home/ziad";
 
@@ -58,6 +62,8 @@
       		'';
   };
 
+  services.flameshot.enable = true;
+
   home.packages = with pkgs; [
     keepassxc
     ripgrep
@@ -65,8 +71,6 @@
     ranger
     ueberzug
 
-    flameshot
-    ungoogled-chromium
     openconnect
 
     xournalpp

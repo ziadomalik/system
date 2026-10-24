@@ -72,4 +72,6 @@ in
     vue-language-server
     vscode-langservers-extracted
   ];
+
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 }
