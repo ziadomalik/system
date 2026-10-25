@@ -62,6 +62,15 @@
       		'';
   };
 
+  programs.opencode = {
+    enable = true;
+    extraPackages = with pkgs; [
+      ripgrep
+      nodejs
+      uv
+    ];
+  };
+
   services.flameshot.enable = true;
 
   home.packages = with pkgs; [

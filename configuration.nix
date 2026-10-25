@@ -41,6 +41,7 @@
     extraGroups = [
       "wheel"
       "video"
+      "docker"
       "networkmanager"
     ];
   };
@@ -85,6 +86,8 @@
     xclip
     xset
   ];
+
+  virtualisation.docker.enable = true;
 
   # ___ Nix ___
 

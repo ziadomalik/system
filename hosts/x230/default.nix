@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./hardware-configuration.nix 
+    ./hardware-configuration.nix
   ];
 
   # ___ Boot ___
@@ -30,27 +30,7 @@
     xf86inputsynaptics
   ];
 
-  services.libinput.enable = false;
   hardware.trackpoint.enable = true;
-
-  services.xserver.synaptics = {
-    enable = true;
-    horizEdgeScroll = true;
-    palmDetect = true;
-    tapButtons = true;
-    vertTwoFingerScroll = true;
-    vertEdgeScroll = true;
-    buttonsMap = [
-      1
-      3
-      2
-    ];
-    fingersMap = [
-      1
-      2
-      3
-    ];
-  };
 
   # ___ Power ___
 
