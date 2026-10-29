@@ -32,14 +32,30 @@
     shellAliases = {
       r = "ranger";
       cls = "clear";
-      grep = "ripgrep";
+      grep = "rg";
 
-      config = "vim ~/system";
       rebuild = "sudo nixos-rebuild switch --flake ~/system";
 
       eth-up = "sudo systemctl start eth-vpn";
       eth-down = "sudo systemctl stop eth-vpn";
     };
+
+    initExtra = ''
+      config() {
+        cd ~/system || return
+
+        [ $# -eq 0 ] && { vim .; return; }
+
+        local match
+        match=$(fd --hidden --exclude .git | fzf --filter "$*" --scheme=path | head -n1)
+
+        if [ -n "$match" ]; then
+          vim "$match"
+        else
+          echo "config: nothing matches '$*'" >&2
+        fi
+      }
+    '';
   };
 
   programs.git = {
@@ -75,6 +91,8 @@
 
   home.packages = with pkgs; [
     keepassxc
+    fd
+    fzf
     ripgrep
 
     ranger

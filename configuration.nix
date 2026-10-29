@@ -51,6 +51,7 @@
   services.xserver = {
     enable = true;
     xkb.layout = "us";
+    xkb.variant = "altgr-intl";
     displayManager.startx.enable = true;
 
     windowManager.xmonad = {
@@ -72,7 +73,7 @@
   };
 
   environment.loginShellInit = ''
-    		[ "$(tty)" = /dev/tty1 ] && startx
+    		[ "$(tty)" = /dev/tty1 ] && exec startx
     	'';
 
   # ___ Packages ___
