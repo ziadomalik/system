@@ -115,5 +115,7 @@
     pnpm
   ];
 
+  fonts.fontconfig.defaultFonts.monospace = [ "MonaspiceXe Nerd Font" ];
+
   home.stateVersion = "26.05";
 }

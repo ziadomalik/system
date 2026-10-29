@@ -73,5 +73,8 @@ in
     vscode-langservers-extracted
   ];
 
-  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
+  fonts.packages = [
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.monaspace
+  ];
 }
