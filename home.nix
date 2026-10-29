@@ -81,8 +81,10 @@
     ueberzug
 
     openconnect
+    telegram-desktop
 
     xournalpp
+    inkscape
     zathura
 
     mpv
