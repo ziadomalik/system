@@ -107,6 +107,8 @@
 
     mpv
     ffmpeg
+    gphoto2
+    darktable
 
     ghc
     gcc

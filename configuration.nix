@@ -41,6 +41,7 @@
     extraGroups = [
       "wheel"
       "video"
+      "camera"
       "docker"
       "networkmanager"
     ];
@@ -89,6 +90,8 @@
   ];
 
   virtualisation.docker.enable = true;
+  services.udisks2.enable = true;
+  programs.gphoto2.enable = true;
 
   # ___ Nix ___
 

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   imports = [
-    ./hardware-configuration.nix 
+    ./hardware-configuration.nix
   ];
 
   # ___ Boot ___
@@ -11,7 +11,7 @@
 
   # ___ Hardware ___
 
-  hardware.graphics = { 
+  hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
@@ -24,7 +24,7 @@
     modesetting.enable = true;
     package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
-  
+
   # ___ Mouse ___
 
   services.libinput.mouse.leftHanded = true;
@@ -32,10 +32,30 @@
   # ___ Virtualization ___
 
   virtualisation.vmware.host.enable = true;
-  
+
   # ___ Networking ___
 
   networking.hostName = "tower";
+
+  # ___ Tower-Specific Software ___
+
+  programs.obs-studio = {
+    enable = true;
+    package = (
+      pkgs.obs-studio.override {
+        cudaSupport = true;
+      }
+    );
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
 
   # ___ Nix-Specific ___
 
