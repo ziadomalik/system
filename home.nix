@@ -110,6 +110,8 @@
     gphoto2
     darktable
 
+    zed-editor
+
     ghc
     gcc
     cmake
