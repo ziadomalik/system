@@ -41,7 +41,7 @@
     };
 
     initExtra = ''
-      config() {
+      config() (
         cd ~/system || return
 
         [ $# -eq 0 ] && { vim .; return; }
@@ -54,7 +54,7 @@
         else
           echo "config: nothing matches '$*'" >&2
         fi
-      }
+      )
     '';
   };
 
@@ -127,7 +127,9 @@
     ))
   ];
 
-  fonts.fontconfig.defaultFonts.monospace = [ "MonaspiceXe Nerd Font" ];
+  fonts.fontconfig.defaultFonts.monospace = [
+    "MonaspiceXe Nerd Font"
+  ];
 
   home.stateVersion = "26.05";
 }
