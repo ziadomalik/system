@@ -44,6 +44,8 @@
       "camera"
       "docker"
       "networkmanager"
+      "scanner"
+      "lp"
     ];
   };
 
@@ -77,6 +79,21 @@
     		[ "$(tty)" = /dev/tty1 ] && exec startx
     	'';
 
+  # ___ Printing ___
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.sane-airscan ];
+    disabledDefaultBackends = [ "escl" ];
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+  };
+
+  services.ipp-usb.enable = true;
+
   # ___ Packages ___
 
   environment.systemPackages = with pkgs; [
@@ -87,6 +104,7 @@
     brightnessctl
     xclip
     xset
+    simple-scan
   ];
 
   virtualisation.docker.enable = true;

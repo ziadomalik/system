@@ -115,8 +115,15 @@
     ghc
     gcc
     cmake
-    nodejs
     pnpm
+    nodejs
+    (pkgs.python3.withPackages (
+      python-pkgs: with python-pkgs; [
+        pandas
+        requests
+        juliandate
+      ]
+    ))
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [ "MonaspiceXe Nerd Font" ];
