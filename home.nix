@@ -98,6 +98,7 @@
     ranger
     ueberzug
 
+    beeper
     openconnect
     telegram-desktop
 

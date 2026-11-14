@@ -5,8 +5,19 @@
     policies = {
       DisableTelemetry = true;
       DisablePocket = true;
-      DisableFirefoxStudies = false;
+      DisableFirefoxStudies = true;
       DontCheckDefaultBrowser = true;
+
+      WebsiteFilter = {
+        Block = [
+          "*://youtube.com/*"
+          "*://*.youtube.com/*"
+          "*://youtu.be/*"
+          "*://*.youtube-nocookie.com/*"
+          "*://*.ytimg.com/*"
+          "*://*.googlevideo.com/*"
+        ];
+      };
     };
 
     profiles.default = {
