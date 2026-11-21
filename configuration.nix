@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   # ___ Boot ___
 
@@ -12,6 +12,13 @@
     plugins = with pkgs; [
       networkmanager-openconnect
     ];
+  };
+
+  services.tailscale.enable = true;
+
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ config.services.tailscale.port ];
   };
 
   # ___ Locale ___
@@ -89,7 +96,7 @@
 
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
   };
 
   services.ipp-usb.enable = true;
