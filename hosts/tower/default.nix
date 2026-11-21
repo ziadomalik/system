@@ -25,6 +25,14 @@
     package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
   };
 
+  # Backups for "z.vsos.ethz.ch"
+
+  services.restic.server = {
+    enable = true;
+    appendOnly = true;
+    privateRepos = true;
+  };
+
   # ___ Mouse ___
 
   services.libinput.mouse.leftHanded = true;
